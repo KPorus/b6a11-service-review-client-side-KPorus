@@ -23,6 +23,9 @@ let route = createBrowserRouter([
             {
                 path:"/work",
                 element:<Work></Work>,
+                loader: async ()=>{ 
+                    return fetch(`http://localhost:5000/work`)
+                }
             },
             {
                 path:"/services",
