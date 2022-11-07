@@ -5,6 +5,7 @@ import Main from "../layout/Main";
 import Login from "../component/Login";
 import Work from "../component/Work"
 import Services from "../component/Services";
+import Registration from "../component/Registration"
 
 let route = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ let route = createBrowserRouter([
             {
                 path:"/login",
                 element:<Login></Login>,
+            },
+            {
+                path:"/signup",
+                element:<Registration></Registration>,
             },
             {
                 path:"/work",

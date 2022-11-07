@@ -31,10 +31,6 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password);
       }
 
-      const verifyEmail = () =>{
-        return sendEmailVerification(auth.currentUser);
-    }
-
     const forgetPassword =(email)=>
     {
         return sendPasswordResetEmail(auth, email)
@@ -55,7 +51,7 @@ const AuthProvider = ({children}) => {
 
     }, [])
 
-    const authInfo = { user, googleLogin, usersignOut, createUser , setLoading, login, setUser, verifyEmail, forgetPassword ,loading}
+    const authInfo = { user, googleLogin, usersignOut, createUser , setLoading, login, setUser, forgetPassword ,loading}
     return ( 
         <AuthContext.Provider value={authInfo}>
             {children}
