@@ -24,94 +24,51 @@ const Header = () => {
       })
   }
   return (
-    <div className='navbar bg-base-100'>
-      <div className='navbar-start'>
-        <div className='dropdown'>
-          <label tabIndex={0} className='btn btn-ghost btn-circle'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-5 w-5'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'>
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M4 6h16M4 12h16M4 18h7'
-              />
-            </svg>
+
+    <div className=" container mx-auto px-4 navbar">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
-          <ul
-            tabIndex={0}
-            className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/courses'>Courses</Link>
-            </li>
-            <li>
-              <Link to='/faq'>FAQ</Link>
-            </li>
-            <li>
-              <Link to='/blog'>Blog</Link>
-            </li>
-            <li className="sm:block hidden">
-              <Link to='/login'>Login</Link>
-            </li>
-            <div className='navbar-end sm:hidden'>
-              <button className='btn btn-ghost btn-square p-2 mr-9 w-[60px]'>
-                {user ? <button className="uppercase" onClick={handleSignOut}>LogOut</button> : <Link to='/login'>Login</Link>}
-              </button>
-              <button className='btn btn-ghost btn-circle'>
-                <div className='avatar placeholder'>
-                  <div className='bg-neutral-focus text-neutral-content rounded-full w-12'>
-
-                    {user?.photoURL ? <img src={user.photoURL} alt='user'></img> : <span>MX</span>}
-
-                  </div>
-                </div>
-              </button>
-
-              <div onClick={() => theme(toggle)}>
-                {
-                  toggle ? <BsFillMoonFill className="text-2xl" /> : <BsFillSunFill className="text-2xl" />
-                }
-              </div>
+          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/work">My Work</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/login">Login</Link></li>
+          </ul>
+        </div>
+        <Link to="/"><img className="w-2/3" src="https://img.icons8.com/external-smashingstocks-hand-drawn-black-smashing-stocks/99/null/external-digital-camera-graphic-design-and-photography-smashingstocks-hand-drawn-black-smashing-stocks.png" alt="logo"/></Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal p-0">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/work">My Work</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/login">Login</Link></li>
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} className="avatar placeholder">
+            <div className=" btn bg-neutral-focus text-neutral-content rounded-full w-12">
+              <span>MX</span>
             </div>
+          </div>
+          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
           </ul>
         </div>
       </div>
-      <div className="sm:block hidden" onClick={() => theme(toggle)}>
-        {
-          toggle ? <BsFillMoonFill className="text-2xl" /> : <BsFillSunFill className="text-2xl" />
-        }
-      </div>
-      <div className='navbar-center'>
-        <div className='btn btn-ghost normal-case text-xl'>
-          <Link to='/' className="flex items-center">
-            <img
-              src='https://img.icons8.com/fluency/48/000000/student-center.png'
-              alt='nav'
-            />
-            Student Center
-          </Link>
-        </div>
-      </div>
-      <div className='navbar-end '>
-        <button className='btn btn-ghost btn-square p-2 mr-9 w-[60px] sm:block hidden'>
-          {user ? <button className="uppercase" onClick={handleSignOut}>LogOut</button> : <Link to='/login'>Login</Link>}
-        </button>
-        <button className='btn btn-ghost btn-circle sm:block hidden'>
-          <div className='avatar placeholder'>
-            <div className='bg-neutral-focus text-neutral-content rounded-full w-12 '>
-              {user?.photoURL ? <img src={user.photoURL} alt='user'></img> : <span>MX</span>}
-            </div>
-          </div>
-        </button>
-      </div>
     </div>
+
   );
 };
 
