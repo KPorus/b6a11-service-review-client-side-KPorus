@@ -1,21 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
+import Review from "./Review";
 
 const CheckOut = () => {
   const { user } = useContext(AuthContext);
   let services = useLoaderData();
   let { title, price, review ,_id} = services;
 
-
-
   const handlePlaceOrder = event => {
     event.preventDefault();
     const form = event.target;
     const name = `${form.Fullname.value}`;
     const email = user?.email || 'unregistered';
-    const message = form.message.value;
+    const phone = form.phone.value;
+
+    if(phone>11)
+    {
+      toast.error("Please provide valid phone")
+    }
 
     const order = {
         service: _id,
@@ -23,11 +27,11 @@ const CheckOut = () => {
         price,
         customer: name,
         email,
-        message
+        phone
     }
 
     // send data to database
-    fetch('http://localhost:5000/orders', {
+    fetch('https://b611-service-review-server.vercel.app/orders', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -61,6 +65,7 @@ const CheckOut = () => {
             name="Fullname"
               type='text'
               placeholder='Full Name'
+              required
               className='p-8 rounded-t-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
             />
             <input
@@ -71,13 +76,12 @@ const CheckOut = () => {
               readOnly
               className='p-8 mt-1 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
             />
-          </div>
-          <div>
-            <textarea
-              name='message'
+            <input
+            name="phone"
               type='text'
-              placeholder='Message...'
-              className=' p-8 block w-full rounded autoexpand focus:outline-none focus:ring focus:ring-opacity-25 dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 '></textarea>
+              placeholder='Phone Number'
+              className='p-8 mt-1 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+            />
           </div>
           <button
             type='submit'
@@ -91,6 +95,12 @@ const CheckOut = () => {
             Check Your service
           </button></Link>
         </form>
+      </div>
+      <div className="text-center font-bold text-5xl p-4"><h1>Review of {title}</h1></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-4">
+        {
+            review.map(review => <Review key={_id} review={review}></Review>)
+        }
       </div>
     </div>
   );
