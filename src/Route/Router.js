@@ -11,6 +11,7 @@ import CheckoutService from "../component/CheckoutService"
 import Blog from "../component/Blog";
 import Orders from "../component/Orders"
 import Private from "../Route/Private"
+import UserReviews from "../component/UserReviews"
 
 let route = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ let route = createBrowserRouter([
             {
                 path:"/orders",
                 element:<Orders></Orders>,
+            },
+            {
+                path:"/userReviews",
+                element:<UserReviews></UserReviews>,
             }
             
         ]

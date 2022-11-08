@@ -28,11 +28,13 @@ const AuthProvider = ({children}) => {
     }
 
     const login = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
       }
 
     const forgetPassword =(email)=>
     {
+        setLoading(true);
         return sendPasswordResetEmail(auth, email)
     }
 

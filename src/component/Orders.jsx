@@ -12,7 +12,7 @@ const Orders = () => {
     setLoading(true)
     fetch(`https://b611-service-review-server.vercel.app/orders/?email=${user?.email}`, {
       headers: {
-        authorization: `Bearer ${localStorage.getItem("Photo-token")}`,
+        authorization: `Bearer ${localStorage.getItem("photo-token")}`,
       },
     })
       .then((res) => {
@@ -34,7 +34,7 @@ const Orders = () => {
         fetch(`https://b611-service-review-server.vercel.app/orders/${id}`, {
             method: 'DELETE',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('genius-token')}`
+                authorization: `Bearer ${localStorage.getItem('photo-token')}`
             }
         })
             .then(res => res.json())

@@ -35,7 +35,7 @@ const CheckoutService = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        // authorization: `Bearer ${localStorage.getItem('genius-token')}`
+         authorization: `Bearer ${localStorage.getItem('photo-token')}`
       },
       body: JSON.stringify(order),
     })
@@ -87,18 +87,22 @@ const CheckoutService = () => {
             Submit
           </button>
           <Link to={`/orders`}>
-          <button
-            type='button'
-            className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100'>
-            Check Your service
-          </button></Link>
+            <button
+              type='button'
+              className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100 mr-2'>
+              Check Your service
+            </button>
+          </Link>
         </form>
       </div>
-      <div className="text-center font-bold text-5xl p-4"><h1>Review of {title}</h1></div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-4">
-        {
-            review.map(review => <Review key={_id} review={review}></Review>)
-        }
+      
+      <div className='text-center font-bold text-5xl p-4'>
+        <h1>Review of {title}</h1>
+      </div>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-4'>
+        {review.map((review) => (
+          <Review key={_id} review={review}></Review>
+        ))}
       </div>
     </div>
   );

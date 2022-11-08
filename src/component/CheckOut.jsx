@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
@@ -35,7 +35,7 @@ const CheckOut = () => {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
-            // authorization: `Bearer ${localStorage.getItem('genius-token')}`
+            authorization: `Bearer ${localStorage.getItem('photo-token')}`
         },
         body: JSON.stringify(order)
     })

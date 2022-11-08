@@ -4,7 +4,7 @@ const Review = ({ review }) => {
   console.log(review);
   let {img,name,details,rating} = review;
   return (
-    <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-500 dark:bg-[#49403afd] dark:text-gray-100'>
+    <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-500 dark:bg-[#726359cb] dark:text-gray-100'>
       <div className='flex justify-between p-4'>
         <div className='flex space-x-4'>
           <div>

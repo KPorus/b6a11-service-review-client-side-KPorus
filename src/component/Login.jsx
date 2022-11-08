@@ -23,55 +23,37 @@ const Login = () => {
     general: "",
   });
 
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     const form = e.target;
-//     const email = form.email.value;
-//     const password = form.password.value;
-
-//     login(email, password)
-//       .then((result) => {
-//         toast.success("success");
-//         let user = result.user;
-//         setLoading(true)
-//         setUser(user);
-//         e.target.reset();
-//         const currentUser = {
-//           email: user.email,
-//         };
-
-//         console.log(currentUser);
-
-//         // get jwt token
-//         fetch("https://b611-service-review-server.vercel.app/jwt", {
-//         //   method: "POST",
-//         //   headers: {
-//         //     "content-type": "application/json",
-//         //   },
-//         //   body: JSON.stringify(currentUser),
-//         })
-//           .then((res) => res.json())
-//           .then((data) => {
-//             console.log(data);
-//             // local storage is the easiest but not the best place to store jwt token
-//             // localStorage.setItem("", data.token);
-//             navigate(from, { replace: true });
-//           });
-//       })
-//       .catch((error) => console.log(error));
-//   };
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    const currentUser = {
+      email: userInfo.email
+    }
+
+    console.log(currentUser);
+
     login(userInfo.email, userInfo.password)
       .then((result) => {
         toast.success("success");
         let user = result.user;
         setLoading(true)
         setUser(user);
-        e.target.reset();
-        navigate(from, {replace: true});
+
+        fetch('https://b611-service-review-server.vercel.app/jwt', {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+      })
+          .then(res => res.json())
+          .then(data => {
+              console.log(data);
+              // local storage is the easiest but not the best place to store jwt token
+              localStorage.setItem('photo-token', data.token);
+              e.target.reset();
+              navigate(from, { replace: true });
+          });
+
       })
       .catch((err) => {
         console.log(err);
@@ -122,7 +104,24 @@ const Login = () => {
         const user = result.user;
         console.log(user)
         toast.success("Login successfull!")
-        navigate(from, {replace: true});
+
+        const currentUser = {
+          email: userInfo.email
+        }
+        fetch('https://b611-service-review-server.vercel.app/jwt', {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+      })
+          .then(res => res.json())
+          .then(data => {
+              console.log(data);
+              // local storage is the easiest but not the best place to store jwt token
+              localStorage.setItem('photo-token', data.token);
+              navigate(from, { replace: true });
+          });
         // ...
       }).catch((error) => {
         console.log(error);

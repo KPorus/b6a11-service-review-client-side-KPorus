@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
-import { useState } from "react";
-import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 
 const Header = () => {
   const { user, usersignOut } = useContext(AuthContext);
