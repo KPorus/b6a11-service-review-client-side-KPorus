@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
 import "./CSS.css"
-import { BiZoomIn } from "react-icons/bi";
+import { AuthContext } from './Context/AuthProvider/AuthProvider';
+
 
 const Work = () => {
+  const { setLoading } = useContext(AuthContext);
+  setLoading(true);
   let images = useLoaderData();
+  
   return (
     <div className='container mx-auto px-4 py-4'>
       <div>

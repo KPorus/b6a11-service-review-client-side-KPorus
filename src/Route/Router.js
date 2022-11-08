@@ -9,6 +9,8 @@ import Registration from "../component/Registration"
 import CheckOut from "../component/CheckOut"
 import CheckoutService from "../component/CheckoutService"
 import Blog from "../component/Blog";
+import Orders from "../component/Orders"
+import Private from "../Route/Private"
 
 let route = createBrowserRouter([
     {
@@ -37,7 +39,7 @@ let route = createBrowserRouter([
             },
             {
                 path:"/services",
-                element:<Services></Services>,
+                element:<Private><Services></Services></Private>,
                 loader: async ()=>
                 {
                     return fetch("https://b611-service-review-server.vercel.app/services")
@@ -62,6 +64,10 @@ let route = createBrowserRouter([
             {
                 path:"/blog",
                 element:<Blog></Blog>,
+            },
+            {
+                path:"/orders",
+                element:<Orders></Orders>,
             }
             
         ]

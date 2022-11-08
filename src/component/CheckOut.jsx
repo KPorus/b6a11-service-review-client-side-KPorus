@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
 
 const CheckOut = () => {
   const { user } = useContext(AuthContext);
   let services = useLoaderData();
-  console.log(services);
   let { title, price, review ,_id} = services;
 
 
@@ -39,7 +39,7 @@ const CheckOut = () => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
-                alert('Order placed successfully')
+                toast.success('Order placed successfully')
                 form.reset();
                 
             }
@@ -68,6 +68,7 @@ const CheckOut = () => {
               type='text'
               placeholder='email'
               defaultValue={user?.email}
+              readOnly
               className='p-8 mt-1 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
             />
           </div>
@@ -83,11 +84,12 @@ const CheckOut = () => {
             className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100 mr-2'>
             Submit
           </button>
+          <Link to='/orders'>
           <button
             type='button'
             className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100'>
             Check Your service
-          </button>
+          </button></Link>
         </form>
       </div>
     </div>
