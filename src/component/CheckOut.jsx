@@ -84,7 +84,7 @@ const CheckOut = () => {
             className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100 mr-2'>
             Submit
           </button>
-          <Link to='/orders'>
+          <Link to={`/orders`}>
           <button
             type='button'
             className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100'>

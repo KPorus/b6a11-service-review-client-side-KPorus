@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
+const OrderRow = ({ order, handleDelete}) => {
     const { _id, serviceName,email, customer, price } = order;
       
 

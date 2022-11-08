@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
 import OrderRow from "./OrderRow";
 
@@ -25,6 +25,27 @@ const Orders = () => {
       });
   }, [user?.email, usersignOut]);
 
+  const handleDelete=(id)=>
+  {
+    const proceed = window.confirm('Are you sure, you want to cancel this order');
+    if (proceed) {
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('genius-token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success('deleted successfully');
+                    const remaining = orders.filter(odr => odr._id !== id);
+                    setOrders(remaining);
+                }
+            })
+    }
+  }
+
   console.log(orders);
   return (
     <div className="container mx-auto py-14">
@@ -44,6 +65,7 @@ const Orders = () => {
               <OrderRow
                 key={order._id}
                 order={order}
+                handleDelete={handleDelete}
                 ></OrderRow>
             ))}
           </tbody>
