@@ -9,7 +9,6 @@ const HomeService = () => {
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
-  console.log(services);
   return (
     <div>
       <div className='text-center my-14'>

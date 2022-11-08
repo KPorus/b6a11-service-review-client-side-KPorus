@@ -1,14 +1,14 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-const CheckOut = () => {
+const CheckoutService = () => {
     let services = useLoaderData()
     console.log(services);
     return (
-        <div className='container mx-auto'>
+        <div>
             
         </div>
     );
 };
 
-export default CheckOut;
+export default CheckoutService;

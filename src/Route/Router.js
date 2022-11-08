@@ -7,6 +7,8 @@ import Work from "../component/Work"
 import Services from "../component/Services";
 import Registration from "../component/Registration"
 import CheckOut from "../component/CheckOut"
+import CheckoutService from "../component/CheckoutService"
+import Blog from "../component/Blog";
 
 let route = createBrowserRouter([
     {
@@ -36,11 +38,31 @@ let route = createBrowserRouter([
             {
                 path:"/services",
                 element:<Services></Services>,
+                loader: async ()=>
+                {
+                    return fetch("http://localhost:5000/services")
+                }
             },
             {
-                path:"/checkout/:id",
+                path:"/homeService/:id",
                 element:<CheckOut></CheckOut>,
+                loader: async ({params})=>
+                {
+                    return fetch(`http://localhost:5000/homeService/${params.id}`)
+                }
             },
+            {
+                path:"/services/:id",
+                element:<CheckoutService></CheckoutService>,
+                loader: async ({params})=>
+                {
+                    return fetch(`http://localhost:5000/services/${params.id}`)
+                }
+            },
+            {
+                path:"/blog",
+                element:<Blog></Blog>,
+            }
             
         ]
     }
