@@ -6,6 +6,7 @@ import Login from "../component/Login";
 import Work from "../component/Work"
 import Services from "../component/Services";
 import Registration from "../component/Registration"
+import CheckOut from "../component/CheckOut"
 
 let route = createBrowserRouter([
     {
@@ -16,10 +17,6 @@ let route = createBrowserRouter([
             {
                 path:"/",
                 element:<Home></Home>,
-                loader: async ()=>
-                {
-                    return fetch("http://localhost:5000/")
-                }
             },
             {
                 path:"/login",
@@ -33,12 +30,16 @@ let route = createBrowserRouter([
                 path:"/work",
                 element:<Work></Work>,
                 loader: async ()=>{ 
-                    return fetch(`http://localhost:5000/work`)
+                    return fetch(`https://b611-service-review-server.vercel.app/work`)
                 }
             },
             {
                 path:"/services",
                 element:<Services></Services>,
+            },
+            {
+                path:"/checkout/:id",
+                element:<CheckOut></CheckOut>,
             },
             
         ]

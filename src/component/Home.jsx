@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
-import HomeServiceCard from "./HomeServiceCard";
+import HomeService from "./HomeService";
+
 
 const Home = () => {
     const {user} = useContext(AuthContext);
-  let service = useLoaderData();
-  console.log(service);
   return (
     <div className='container mx-auto px-4'>
       {/* intro part */}
@@ -72,19 +71,7 @@ const Home = () => {
       </div>
 
       {/* home service part */}
-      <div className='text-center my-14'>
-          <h1 className='text-4xl font-bold border-b-2 border-[#836b5da1]'>Service</h1>
-        </div>
-      <div className='my-7'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 gap-3 '>
-          {service.map((service) => (
-            <HomeServiceCard service={service} key={service}></HomeServiceCard>
-          ))}
-        </div>
-        <Link to='/services' className='flex justify-around'>
-          <button className='btn btn-[#FFDBC7] '>Explore More</button>
-        </Link>
-      </div>
+      <HomeService></HomeService>
     </div>
   );
 };

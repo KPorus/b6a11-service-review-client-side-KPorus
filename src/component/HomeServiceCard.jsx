@@ -12,7 +12,7 @@ const HomeServiceCard = ({service}) => {
             <h2 className='text-xl p-2'>{quantity}</h2>
             <h2 className='text-xl p-2'>{outfit}</h2>
             <h2 className='text-xl p-2'>{quality}</h2>
-            <Link to="/checkout"><button className='btn btn-accent'>Continue</button></Link>
+            <Link to={`/checkout/${_id}`}><button className='btn btn-accent'>Continue</button></Link>
         </div>
     );
 };
