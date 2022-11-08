@@ -1,0 +1,14 @@
+.service:hover{
+    background-color: rgb(211, 183, 132);
+    color: azure;
+    transition: 300ms all linear;
+    -webkit-transition: 300ms all linear;
+    -moz-transition: 300ms all linear;
+    -ms-transition: 300ms all linear;
+    -o-transition: 300ms all linear;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
