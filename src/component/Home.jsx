@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { BiZoomIn } from "react-icons/bi";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
 import HomeService from "./HomeService";
+import "./CSS.css"
 
 
 const Home = () => {
@@ -41,7 +43,7 @@ const Home = () => {
           <p className='tex-2xl font-medium'>Here is some of my work.</p>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-4 '>
-          <div>
+          <div className="design m-1">
             <img
               className='w-full'
               src='https://i.ibb.co/mDB7WYs/pexels-soulseeker-1589820.jpg'
@@ -49,7 +51,7 @@ const Home = () => {
             />
           </div>
 
-          <div>
+          <div className="design m-1">
             <img
               className='w-full'
               src='https://i.ibb.co/LtKv05q/pexels-fauzan-muzakky-5010780.jpg'
@@ -57,7 +59,7 @@ const Home = () => {
             />
           </div>
 
-          <div>
+          <div className="design m-1">
             <img
               className='w-full'
               src='https://i.ibb.co/x5DZRFq/pexels-pixabay-36029.jpg'

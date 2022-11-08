@@ -2,7 +2,8 @@ import React from 'react';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
-
+import "./CSS.css"
+import { BiZoomIn } from "react-icons/bi";
 
 const Work = () => {
   let images = useLoaderData();

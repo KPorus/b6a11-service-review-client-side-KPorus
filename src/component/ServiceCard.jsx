@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./HomeService.css"
+import "./CSS.css"
 const ServiceCard = ({ services }) => {
     let {_id, title, price, quantity, quality, outfit,time} = services;
   return (
-    <div className='border-4 border-[#836B5D] text-center p-[4rem] service'>
+    <div className='border-4 border-[#836B5D] text-center p-8 sm:p-[4rem] service'>
       <h1 className='font-bold text-4xl border-b-2 border-[#836b5da1]'>
         {title}
       </h1>
