@@ -44,7 +44,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
+            className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 uppercase font-semibold'>
             <li>
               <Link to='/'>Home</Link>
             </li>
@@ -55,8 +55,16 @@ const Header = () => {
               <Link to='/services'>Services</Link>
             </li>
             <li>
-              <Link to='/login'>Login</Link>
-            </li>
+            <button>
+              {user ? (
+                <button className='uppercase' onClick={handleSignOut}>
+                  LogOut
+                </button>
+              ) : (
+                <Link to='/login'>Login</Link>
+              )}
+            </button>
+          </li>
           </ul>
         </div>
         <Link to='/'>
@@ -68,7 +76,7 @@ const Header = () => {
         </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>
-        <ul className='menu menu-horizontal p-0'>
+        <ul className='menu menu-horizontal p-0 uppercase font-semibold'>
           <li>
             <Link to='/'>Home</Link>
           </li>
@@ -76,7 +84,7 @@ const Header = () => {
             <Link to='/work'>My Work</Link>
           </li>
           <li>
-            <Link to='/services'>Services</Link>
+            <Link to='/services' >Services</Link>
           </li>
           <li>
             <button>
@@ -85,7 +93,7 @@ const Header = () => {
                   LogOut
                 </button>
               ) : (
-                <Link to='/login'>Login</Link>
+                <Link className='uppercase' to='/login'>Login</Link>
               )}
             </button>
           </li>
