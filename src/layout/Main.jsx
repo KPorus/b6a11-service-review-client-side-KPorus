@@ -6,8 +6,8 @@ import Header from '../component/Header';
 const Main = () => {
     return (
         <div>
-            <Header></Header>
-            <Outlet></Outlet>
+            <Header className=""></Header>
+            <Outlet className = "container mx-auto"></Outlet>
             <Footer></Footer>
         </div>
     );

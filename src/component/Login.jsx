@@ -147,7 +147,7 @@ const Login = () => {
   }
 
   return (
-    <div className='hero  my-20 container mx-auto px-4'>
+    <div className='hero  my-20 container mx-auto'>
       <div className='hero-content grid md:gap-20 md:grid-cols-2 flex-col lg:flex-row'>
         <div className='text-center lg:text-left'>
         <img className="md:w-2/3 inline md:block" src="https://img.icons8.com/external-smashingstocks-hand-drawn-black-smashing-stocks/99/null/external-digital-camera-graphic-design-and-photography-smashingstocks-hand-drawn-black-smashing-stocks.png" alt="logo"/>

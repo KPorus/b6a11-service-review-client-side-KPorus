@@ -2,7 +2,7 @@ import React from 'react';
 
 const CheckOut = () => {
     return (
-        <div>
+        <div className='container mx-auto'>
             
         </div>
     );

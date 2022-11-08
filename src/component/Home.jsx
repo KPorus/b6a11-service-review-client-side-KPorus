@@ -7,17 +7,17 @@ import HomeService from "./HomeService";
 const Home = () => {
     const {user} = useContext(AuthContext);
   return (
-    <div className='container mx-auto px-4'>
+    <div className="container mx-auto px-4">
       {/* intro part */}
       <div className='hero'>
         <div className='hero-content  flex-col lg:flex-row'>
           <img
             src='https://i.ibb.co/xCG2YjJ/pexels-kaique-rocha-598917.jpg'
-            className='max-w-sm rounded-lg shadow-2xl'
+            className='max-w-sm rounded-lg shadow-2xl sm:w-1/4 w-5/6'
             alt='owner'
           />
           <div>
-            <h1 className='text-5xl font-bold'>Welcome</h1>
+            <h1 className='sm:text-5xl font-bold'>Welcome</h1>
             <p className='py-6 text-xl'>
               Hi I am Fardin khan. I am a photographer. In this website i gave
               some work of my which is my most favourite. Hope you like it. Also
@@ -40,7 +40,7 @@ const Home = () => {
           <h1 className='text-4xl font-bold border-b-2 border-[#836b5da1]'>Work</h1>
           <p className='tex-2xl font-medium'>Here is some of my work.</p>
         </div>
-        <div className='grid sm:grid-cols-2 lg:grid-cols-3 my-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-4 '>
           <div>
             <img
               className='w-full'

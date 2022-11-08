@@ -7,11 +7,6 @@ import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 
 const Header = () => {
   const { user, usersignOut } = useContext(AuthContext);
-  const [toggle, settoggle] = useState(false);
-
-  let theme = (toggle) => {
-    settoggle(!toggle);
-  };
 
   let handleSignOut = () => {
     usersignOut()
@@ -24,7 +19,7 @@ const Header = () => {
       });
   };
   return (
-    <div className=' container mx-auto px-4 navbar'>
+    <div className='container mx-auto navbar'>
       <div className='navbar-start'>
         <div className='dropdown'>
           <label tabIndex={0} className='btn btn-ghost lg:hidden'>
@@ -55,16 +50,16 @@ const Header = () => {
               <Link to='/services'>Services</Link>
             </li>
             <li>
-            <button>
-              {user ? (
-                <button className='uppercase' onClick={handleSignOut}>
-                  LogOut
-                </button>
-              ) : (
-                <Link to='/login'>Login</Link>
-              )}
-            </button>
-          </li>
+              <button>
+                {user ? (
+                  <button className='uppercase' onClick={handleSignOut}>
+                    LogOut
+                  </button>
+                ) : (
+                  <Link to='/login'>Login</Link>
+                )}
+              </button>
+            </li>
           </ul>
         </div>
         <Link to='/'>
@@ -84,7 +79,7 @@ const Header = () => {
             <Link to='/work'>My Work</Link>
           </li>
           <li>
-            <Link to='/services' >Services</Link>
+            <Link to='/services'>Services</Link>
           </li>
           <li>
             <button>
@@ -93,39 +88,23 @@ const Header = () => {
                   LogOut
                 </button>
               ) : (
-                <Link className='uppercase' to='/login'>Login</Link>
+                <Link className='uppercase' to='/login'>
+                  Login
+                </Link>
               )}
             </button>
           </li>
         </ul>
       </div>
       <div className='navbar-end'>
-        <div className='dropdown dropdown-end'>
-          <div tabIndex={0} className='avatar placeholder'>
-            <div className=' btn bg-neutral-focus text-neutral-content rounded-full w-12'>
-              {user?.photoURL ? (
-                <img src={user.photoURL} alt='user'></img>
-              ) : (
-                <span>MX</span>
-              )}
-            </div>
+        <div className='avatar placeholder'>
+          <div className='bg-neutral-focus text-neutral-content rounded-full w-12'>
+            {user?.photoURL ? (
+              <img src={user.photoURL} alt='user'></img>
+            ) : (
+              <span>MX</span>
+            )}
           </div>
-          <ul
-            tabIndex={0}
-            className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
-            <li>
-              <a className='justify-between'>
-                Profile
-                <span className='badge'>New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
