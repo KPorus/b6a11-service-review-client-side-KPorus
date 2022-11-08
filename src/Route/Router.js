@@ -40,7 +40,7 @@ let route = createBrowserRouter([
                 element:<Services></Services>,
                 loader: async ()=>
                 {
-                    return fetch("http://localhost:5000/services")
+                    return fetch("https://b611-service-review-server.vercel.app/services")
                 }
             },
             {
@@ -48,7 +48,7 @@ let route = createBrowserRouter([
                 element:<CheckOut></CheckOut>,
                 loader: async ({params})=>
                 {
-                    return fetch(`http://localhost:5000/homeService/${params.id}`)
+                    return fetch(`https://b611-service-review-server.vercel.app/homeService/${params.id}`)
                 }
             },
             {
@@ -56,7 +56,7 @@ let route = createBrowserRouter([
                 element:<CheckoutService></CheckoutService>,
                 loader: async ({params})=>
                 {
-                    return fetch(`http://localhost:5000/services/${params.id}`)
+                    return fetch(`https://b611-service-review-server.vercel.app/services/${params.id}`)
                 }
             },
             {

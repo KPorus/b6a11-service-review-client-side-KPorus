@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { BiZoomIn } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
 import HomeService from "./HomeService";
 import "./CSS.css"
