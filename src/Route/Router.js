@@ -16,6 +16,10 @@ let route = createBrowserRouter([
             {
                 path:"/",
                 element:<Home></Home>,
+                loader: async ()=>
+                {
+                    return fetch("http://localhost:5000/")
+                }
             },
             {
                 path:"/login",
