@@ -16,7 +16,7 @@ const CheckOut = () => {
     const email = user?.email || 'unregistered';
     const phone = form.phone.value;
 
-    if(phone>11)
+    if(phone<11)
     {
       toast.error("Please provide valid phone")
     }
@@ -31,7 +31,7 @@ const CheckOut = () => {
     }
 
     // send data to database
-    fetch('https://b611-service-review-server.vercel.app/orders', {
+    fetch('https://b6a11-service-review-server-side-k-porus.vercel.app/orders', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
