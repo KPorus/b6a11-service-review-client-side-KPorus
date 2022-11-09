@@ -5,10 +5,11 @@ const HomeService = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("https://b611-service-review-server.vercel.app/homeService")
+    fetch("https://b611-service-review-server.vercel.app/homeServices")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
+  console.log(services);
   return (
     <div>
       <div className='text-center my-14'>

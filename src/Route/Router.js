@@ -47,16 +47,8 @@ let route = createBrowserRouter([
                 }
             },
             {
-                path:"/homeService/:id",
-                element:<CheckOut></CheckOut>,
-                loader: async ({params})=>
-                {
-                    return fetch(`https://b611-service-review-server.vercel.app/homeService/${params.id}`)
-                }
-            },
-            {
                 path:"/services/:id",
-                element:<CheckoutService></CheckoutService>,
+                element:<CheckOut></CheckOut>,
                 loader: async ({params})=>
                 {
                     return fetch(`https://b611-service-review-server.vercel.app/services/${params.id}`)
