@@ -102,6 +102,7 @@ const Login = () => {
     googleLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+        setLoading(true)
         console.log(user)
         toast.success("Login successfull!")
 

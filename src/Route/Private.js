@@ -14,7 +14,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
 
     if(loading){
-       return setLoading(false)
+        return setLoading(true);
     }
 
     if(user){

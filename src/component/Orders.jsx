@@ -10,21 +10,24 @@ const Orders = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch(` https://b611-service-review-server.vercel.app/orders?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("photo-token")}`,
-      },
-    })
-      .then((res) => {
-        if (res.status === 401 || res.status === 403) {
-          return usersignOut();
-        }
-        return res.json();
+    if(user?.email)
+    {
+      fetch(`https://b611-service-review-server.vercel.app/orders?email=${user?.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("photo-token")}`,
+        },
       })
-      .then((data) => {
-
-        setOrders(data);
-      });
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            return usersignOut();
+          }
+          return res.json();
+        })
+        .then((data) => {
+  
+          setOrders(data);
+        }) 
+    }
   }, [user?.email, usersignOut]);
 
   const handleDelete=(id)=>
