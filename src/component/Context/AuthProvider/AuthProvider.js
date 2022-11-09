@@ -17,7 +17,7 @@ const AuthProvider = ({children}) => {
 
     let usersignOut = ()=>
     {
-        setLoading(true);
+        localStorage.removeItem('photo-token');
         return signOut(auth)
     }
 

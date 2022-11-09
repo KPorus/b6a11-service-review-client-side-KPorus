@@ -15,7 +15,9 @@ const HomeServiceCard = ({service}) => {
             <h2 className='text-xl p-2'>{outfit}</h2>
             <h2 className='text-xl p-2'>{quality}</h2>
              {
-                user ? <Link to={`/services/${_id}`}><button className='btn btn-accent'>Continue</button></Link>:
+                user ? <Link to={`/services/${_id}`}>
+                <button className='btn btn-accent'>Continue</button>
+              </Link>:
                 <Link to={`/login`}><button className='btn btn-accent'>Continue</button></Link>
              }
         </div>

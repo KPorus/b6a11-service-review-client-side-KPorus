@@ -8,9 +8,9 @@ import { AuthContext } from './Context/AuthProvider/AuthProvider';
 
 const Work = () => {
   const { setLoading } = useContext(AuthContext);
-  setLoading(true);
-  let images = useLoaderData();
   
+  let images = useLoaderData();
+  setLoading(false);
   return (
     <div className='container mx-auto px-4 py-4'>
       <div>

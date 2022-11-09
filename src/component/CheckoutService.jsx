@@ -4,9 +4,10 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
 import Review from "./Review";
 
-const CheckOut = () => {
+const CheckoutService = () => {
   const { user } = useContext(AuthContext);
   let services = useLoaderData();
+  console.log(services);
   let { title, price, review, _id } = services;
 
   const handlePlaceOrder = (event) => {
@@ -16,7 +17,7 @@ const CheckOut = () => {
     const email = user?.email || "unregistered";
     const phone = form.phone.value;
 
-    if (phone < 11) {
+    if (phone > 11) {
       toast.error("Please provide valid phone");
     }
 
@@ -30,55 +31,24 @@ const CheckOut = () => {
     };
 
     // send data to database
-    fetch(
-      "https://b611-service-review-server.vercel.app/orders",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("photo-token")}`,
-        },
-        body: JSON.stringify(order),
-      }
-    )
+    fetch("https://b611-service-review-server.vercel.app/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+         authorization: `Bearer ${localStorage.getItem('photo-token')}`
+      },
+      body: JSON.stringify(order),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Order placed successfully");
-          event.reset();
+          form.reset();
         }
       })
       .catch((er) => console.error(er));
   };
-
-
-  const handleStatusUpdate = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const details = form.details.value;
-    const rating = form.rating.value;
-
-    fetch(`http://localhost:5000/services/${_id}`, {
-        method: 'PATCH',
-        headers: {
-            'content-type': 'application/json',
-            authorization: `Bearer ${localStorage.getItem('photo-token')}`
-        },
-        body: JSON.stringify({ name:name,details:details,rating:rating })
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.modifiedCount > 0) {
-              review.push({ name:name,details:details,rating:rating })
-             toast.success("Review add")   
-            }
-        })
-};
-
-
   return (
     <div className='container mx-auto my-16'>
       <div className='flex flex-col w-full p-12 space-y-4 text-center dark:bg-[#9c8476fb] dark:text-slate-300'>
@@ -119,38 +89,13 @@ const CheckOut = () => {
           <Link to={`/orders`}>
             <button
               type='button'
-              className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100'>
+              className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100 mr-2'>
               Check Your service
             </button>
           </Link>
         </form>
-        <form onSubmit={handleStatusUpdate}>
-          <input
-            name='name'
-            type='text'
-            defaultValue={ user?.displayName}
-            readOnly
-            className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
-          />
-          <input
-            name='details'
-            type='text'
-            placeholder='Add your review details'
-            className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
-          />
-          <input
-            name='rating'
-            type='text'
-            placeholder='Add your rating (1 to 5)'
-            className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
-          />
-           <button
-            type='submit'
-            className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100 mr-2'>
-            Submit
-          </button>
-        </form>
       </div>
+      
       <div className='text-center font-bold text-5xl p-4'>
         <h1>Review of {title}</h1>
       </div>
@@ -163,4 +108,4 @@ const CheckOut = () => {
   );
 };
 
-export default CheckOut;
+export default CheckoutService;

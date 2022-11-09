@@ -34,7 +34,7 @@ let route = createBrowserRouter([
                 path:"/work",
                 element:<Work></Work>,
                 loader: async ()=>{ 
-                    return fetch(`https://b6a11-service-review-server-side-k-porus.vercel.app/work`)
+                    return fetch(`https://b611-service-review-server.vercel.app/work`)
                 }
             },
             {
@@ -42,7 +42,7 @@ let route = createBrowserRouter([
                 element:<Private><Services></Services></Private>,
                 loader: async ()=>
                 {
-                    return fetch("https://b6a11-service-review-server-side-k-porus.vercel.app/services")
+                    return fetch("https://b611-service-review-server.vercel.app/services")
                 }
             },
             {
@@ -50,7 +50,7 @@ let route = createBrowserRouter([
                 element:<CheckOut></CheckOut>,
                 loader: async ({params})=>
                 {
-                    return fetch(`https://b6a11-service-review-server-side-k-porus.vercel.app/services/${params.id}`)
+                    return fetch(`https://b611-service-review-server.vercel.app/services/${params.id}`)
                 }
             },
             {

@@ -10,7 +10,7 @@ const Orders = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch(` https://b6a11-service-review-server-side-k-porus.vercel.app/orders?email=${user?.email}`, {
+    fetch(` https://b611-service-review-server.vercel.app/orders?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("photo-token")}`,
       },
@@ -31,7 +31,7 @@ const Orders = () => {
   {
     const proceed = window.confirm('Are you sure, you want to cancel this order');
     if (proceed) {
-        fetch(`https://b6a11-service-review-server-side-k-porus.vercel.app/orders/${id}`, {
+        fetch(`https://b611-service-review-server.vercel.app/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('photo-token')}`

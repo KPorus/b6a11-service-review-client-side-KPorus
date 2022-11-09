@@ -37,7 +37,7 @@ const Registration = () => {
         const currentUser = {
           email: userInfo.email,
         };
-        fetch("https://b6a11-service-review-server-side-k-porus.vercel.app/jwt", {
+        fetch("https://b611-service-review-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
