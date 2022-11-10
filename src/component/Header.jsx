@@ -52,15 +52,23 @@ const Header = () => {
             </li>
             <li>
               <button>
+                {user?.email &&
+                  <Link to='/userReviews' >MY REVIEWS</Link>
+                }
+              </button>
+            </li>
+            <li>
+              <button>
                 {user ? (
                   <button className='uppercase' onClick={handleSignOut}>
                     LogOut
                   </button>
                 ) : (
-                  <Link to='/login'>Login</Link>
+                  <Link to='/login'>LOGIN</Link>
                 )}
               </button>
             </li>
+            
           </ul>
         </div>
         <Link to='/'>
@@ -85,6 +93,13 @@ const Header = () => {
           <li>
               <Link to='/blog'>Blog</Link>
             </li>
+            <li>
+              <button>
+                {user?.email &&
+                  <Link to='/userReviews'>MY REVIEWS</Link>
+                }
+              </button>
+            </li>
           <li>
             <button>
               {user ? (
@@ -93,7 +108,7 @@ const Header = () => {
                 </button>
               ) : (
                 <Link className='uppercase' to='/login'>
-                  Login
+                  LOGIN
                 </Link>
               )}
             </button>

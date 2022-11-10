@@ -5,7 +5,7 @@ const HomeService = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("https://b611-service-review-server.vercel.app/homeServices")
+    fetch("http://localhost:5000/homeServices")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -20,11 +20,11 @@ const HomeService = () => {
       <div className='my-7'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 gap-3 '>
           {services.map((service) => (
-            <HomeServiceCard service={service} key={service}></HomeServiceCard>
+            <HomeServiceCard service={service} key={service._id}></HomeServiceCard>
           ))}
         </div>
         <Link to='/services' className='flex justify-around'>
-          <button className='btn btn-[#FFDBC7] '>Explore More</button>
+          <span className='btn btn-[#FFDBC7] '>Explore More</span>
         </Link>
       </div>
     </div>

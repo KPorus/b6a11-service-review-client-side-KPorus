@@ -12,7 +12,7 @@ const Orders = () => {
     setLoading(true)
     if(user?.email)
     {
-      fetch(`https://b611-service-review-server.vercel.app/orders?email=${user?.email}`, {
+      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("photo-token")}`,
         },
@@ -34,7 +34,7 @@ const Orders = () => {
   {
     const proceed = window.confirm('Are you sure, you want to cancel this order');
     if (proceed) {
-        fetch(`https://b611-service-review-server.vercel.app/orders/${id}`, {
+        fetch(`http://localhost:5000/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('photo-token')}`
@@ -52,6 +52,8 @@ const Orders = () => {
   }
 
   console.log(orders);
+  
+  document.title = "User Orders"
   return (
     <div className="container mx-auto py-14">
       <h2 className='text-5xl'>You have add {orders.length} service</h2>

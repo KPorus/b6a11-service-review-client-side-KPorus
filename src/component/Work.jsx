@@ -9,6 +9,7 @@ import { AuthContext } from './Context/AuthProvider/AuthProvider';
 const Work = () => {
   const { setLoading } = useContext(AuthContext);
   
+  document.title = "Work"
   let images = useLoaderData();
   setLoading(false);
   return (

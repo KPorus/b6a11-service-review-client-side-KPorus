@@ -6,6 +6,8 @@ import "./CSS.css"
 
 
 const Home = () => {
+  
+  document.title = "Home"
     const {user} = useContext(AuthContext);
   return (
     <div className="container mx-auto px-4">
@@ -28,7 +30,7 @@ const Home = () => {
              user? <Link to="/services"><button className='btn btn-[#FFDBC7]'>Get Started</button></Link>:
              <Link to='/login'>
              {" "}
-             <button className='btn btn-[#FFDBC7]'>Get Started</button>
+             <span className='btn btn-[#FFDBC7]'>Get Started</span>
            </Link>
            }
           </div>
@@ -67,7 +69,7 @@ const Home = () => {
           </div>
         </div>
         <Link to='/work' className='flex justify-around'>
-          <button className='btn btn-[#FFDBC7] '>View More</button>
+          <span className='btn btn-[#FFDBC7] '>View More</span>
         </Link>
       </div>
 

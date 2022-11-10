@@ -38,12 +38,12 @@ const Login = () => {
         setLoading(true)
         setUser(user);
 
-        fetch('https://b611-service-review-server.vercel.app/jwt', {
+        fetch('http://localhost:5000/jwt', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'
           },
-          body: JSON.stringify(currentUser)
+          body: JSON.stringify(user.email)
       })
           .then(res => res.json())
           .then(data => {
@@ -107,9 +107,10 @@ const Login = () => {
         toast.success("Login successfull!")
 
         const currentUser = {
-          email: userInfo.email
+          email: user.email
         }
-        fetch('https://b611-service-review-server.vercel.app/jwt', {
+        console.log(currentUser);
+        fetch('http://localhost:5000/jwt', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'
@@ -145,6 +146,9 @@ const Login = () => {
       // ..
     });
   }
+
+  
+  document.title = "Login form"
 
   return (
     <div className='hero  my-20 container mx-auto'>

@@ -30,17 +30,14 @@ const CheckOut = () => {
     };
 
     // send data to database
-    fetch(
-      "https://b611-service-review-server.vercel.app/orders",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("photo-token")}`,
-        },
-        body: JSON.stringify(order),
-      }
-    )
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("photo-token")}`,
+      },
+      body: JSON.stringify(order),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -52,33 +49,44 @@ const CheckOut = () => {
       .catch((er) => console.error(er));
   };
 
+    const handleStatusUpdate = (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const name = user?.displayName;
+      const img = user?.photoURL;
+      const details = form.details.value;
+      const rating = form.rating.value;
+      const email = user?.email || "unregistered";
 
-  const handleStatusUpdate = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const details = form.details.value;
-    const rating = form.rating.value;
+      const userReview = 
+        { name:name,
+          details:details,
+          email:email,
+          rating:rating,
+          img:img
+        }
+      
 
-    fetch(`http://localhost:5000/services/${_id}`, {
-        method: 'PATCH',
-        headers: {
-            'content-type': 'application/json',
-            authorization: `Bearer ${localStorage.getItem('photo-token')}`
-        },
-        body: JSON.stringify({ name:name,details:details,rating:rating })
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.modifiedCount > 0) {
-              review.push({ name:name,details:details,rating:rating })
-             toast.success("Review add")   
-            }
-        })
-};
+      fetch(`http://localhost:5000/userReview`, {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json',
+              authorization: `Bearer ${localStorage.getItem("photo-token")}`,
+          },
+          body: JSON.stringify(userReview)
+      })
+          .then(res => res.json())
+          .then(data => {
+              console.log(data);
+              if (data.acknowledged) {
+                toast.success("Review add")
+                
+              }event.reset();
+          })
+          .catch((er) => console.error(er));
+  };
 
-
+  document.title = "Check Out && Review";
   return (
     <div className='container mx-auto my-16'>
       <div className='flex flex-col w-full p-12 space-y-4 text-center dark:bg-[#9c8476fb] dark:text-slate-300'>
@@ -124,31 +132,40 @@ const CheckOut = () => {
             </button>
           </Link>
         </form>
+
         <form onSubmit={handleStatusUpdate}>
           <input
-            name='name'
+            name='Fullname'
             type='text'
-            defaultValue={ user?.displayName}
+            defaultValue={user?.displayName}
+            readOnly
+            className='p-8 mr-2 rounded-t-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+          />
+          <input
+            name='email'
+            type='email'
+            defaultValue={user?.email}
             readOnly
             className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
           />
           <input
             name='details'
             type='text'
-            placeholder='Add your review details'
+            placeholder='Add review'
             className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
           />
           <input
             name='rating'
             type='text'
-            placeholder='Add your rating (1 to 5)'
+            placeholder='Add Rating'
             className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
           />
-           <button
-            type='submit'
-            className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100 mr-2'>
-            Submit
-          </button>
+          
+            <button
+              type='submit'
+              className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100'>
+              Add Review
+            </button>
         </form>
       </div>
       <div className='text-center font-bold text-5xl p-4'>

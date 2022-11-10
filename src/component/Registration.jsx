@@ -37,7 +37,7 @@ const Registration = () => {
         const currentUser = {
           email: userInfo.email,
         };
-        fetch("https://b611-service-review-server.vercel.app/jwt", {
+        fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -96,6 +96,7 @@ const Registration = () => {
     setAccepted(e.target.checked);
   };
 
+  document.title = "Sign Up"
   return (
     <div className='hero min-h-screen bg-base-200' onSubmit={handleLogin}>
       <div className='hero-content flex-col lg:flex-row-reverse'>
