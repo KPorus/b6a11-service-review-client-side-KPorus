@@ -34,7 +34,7 @@ let route = createBrowserRouter([
                 path:"/work",
                 element:<Work></Work>,
                 loader: async ()=>{ 
-                    return fetch(`http://localhost:5000/work`)
+                    return fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/work`)
                 }
             },
             {
@@ -42,7 +42,7 @@ let route = createBrowserRouter([
                 element:<Private><Services></Services></Private>,
                 loader: async ()=>
                 {
-                    return fetch("http://localhost:5000/services")
+                    return fetch(" https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/services")
                 }
             },
             {
@@ -50,7 +50,7 @@ let route = createBrowserRouter([
                 element:<CheckOut></CheckOut>,
                 loader: async ({params})=>
                 {
-                    return fetch(`http://localhost:5000/services/${params.id}`)
+                    return fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/services/${params.id}`)
                 }
             },
             {
@@ -63,10 +63,10 @@ let route = createBrowserRouter([
             },
             {
                 path:"/userReviews",
-                element:<UserReviews></UserReviews>,
+                element:<Private><UserReviews></UserReviews></Private>,
                 loader: async()=>
                 {
-                    return fetch("http://localhost:5000/userReviews")
+                    return fetch(" https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/userReviews")
                 }
             }
             

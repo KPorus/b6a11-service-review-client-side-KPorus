@@ -30,7 +30,7 @@ const CheckOut = () => {
     };
 
     // send data to database
-    fetch("http://localhost:5000/orders", {
+    fetch(" https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -53,7 +53,7 @@ const CheckOut = () => {
       event.preventDefault();
       const form = event.target;
       const name = user?.displayName;
-      const img = user?.photoURL;
+      const img = user?.photoURL || "MX";
       const details = form.details.value;
       const rating = form.rating.value;
       const email = user?.email || "unregistered";
@@ -67,7 +67,7 @@ const CheckOut = () => {
         }
       
 
-      fetch(`http://localhost:5000/userReview`, {
+      fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/userReview`, {
           method: 'POST',
           headers: {
               'content-type': 'application/json',
@@ -80,8 +80,7 @@ const CheckOut = () => {
               console.log(data);
               if (data.acknowledged) {
                 toast.success("Review add")
-                
-              }event.reset();
+              }form.reset();
           })
           .catch((er) => console.error(er));
   };
@@ -138,7 +137,6 @@ const CheckOut = () => {
             name='Fullname'
             type='text'
             defaultValue={user?.displayName}
-            readOnly
             className='p-8 mr-2 rounded-t-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
           />
           <input

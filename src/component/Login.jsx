@@ -38,16 +38,15 @@ const Login = () => {
         setLoading(true)
         setUser(user);
 
-        fetch('http://localhost:5000/jwt', {
+        fetch(' https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/jwt', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'
           },
-          body: JSON.stringify(user.email)
+          body: JSON.stringify(currentUser)
       })
           .then(res => res.json())
           .then(data => {
-              console.log(data);
               // local storage is the easiest but not the best place to store jwt token
               localStorage.setItem('photo-token', data.token);
               e.target.reset();
@@ -110,7 +109,7 @@ const Login = () => {
           email: user.email
         }
         console.log(currentUser);
-        fetch('http://localhost:5000/jwt', {
+        fetch(' https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/jwt', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'

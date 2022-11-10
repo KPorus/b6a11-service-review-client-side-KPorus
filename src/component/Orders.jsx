@@ -12,7 +12,7 @@ const Orders = () => {
     setLoading(true)
     if(user?.email)
     {
-      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+      fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/orders?email=${user?.email}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("photo-token")}`,
         },
@@ -34,7 +34,7 @@ const Orders = () => {
   {
     const proceed = window.confirm('Are you sure, you want to cancel this order');
     if (proceed) {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('photo-token')}`

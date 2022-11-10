@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import toast from 'react-hot-toast';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../component/Context/AuthProvider/AuthProvider';
 
@@ -15,13 +14,12 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
 
     if(loading){
-        toast.loader("Please wait")
-        return setLoading(loading) ;
+        return setLoading(false)
     }
-
-    if(user){
-        
-        return children;    
+    
+    if(user && user.uid){
+       
+        return children;
     }
     return <Navigate to="/login" state={{from: location}} replace></Navigate>
     

@@ -1,6 +1,7 @@
 import React from "react";
 
 const Blog = () => {
+  document.title = "Blog"
   return (
     <section className='dark:text-gray-600 mt-10'>
       <div className='container flex flex-col justify-center px-4 py-8 mx-auto md:p-8'>
