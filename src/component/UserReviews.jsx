@@ -7,6 +7,10 @@ const UserReviews = () => {
   let userReviews = useLoaderData();
   let [displayReview, setdisplayReview] = useState(userReviews);
 
+  if(displayReview == false)
+  {
+    return toast.error("Here is no review")
+  }
   const handleDelete = (id) => {
     const proceed = window.confirm(
       "Are you sure, you want to cancel this review"

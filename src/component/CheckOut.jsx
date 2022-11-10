@@ -67,22 +67,25 @@ const CheckOut = () => {
         }
       
 
+     if(user?.email)
+     {
       fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/userReview`, {
-          method: 'POST',
-          headers: {
-              'content-type': 'application/json',
-              authorization: `Bearer ${localStorage.getItem("photo-token")}`,
-          },
-          body: JSON.stringify(userReview)
-      })
-          .then(res => res.json())
-          .then(data => {
-              console.log(data);
-              if (data.acknowledged) {
-                toast.success("Review add")
-              }form.reset();
-          })
-          .catch((er) => console.error(er));
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            authorization: `Bearer ${localStorage.getItem("photo-token")}`,
+        },
+        body: JSON.stringify(userReview)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.acknowledged) {
+              toast.success("Review add")
+            }form.reset();
+        })
+        .catch((er) => console.error(er));
+     }
   };
 
   document.title = "Check Out && Review";
