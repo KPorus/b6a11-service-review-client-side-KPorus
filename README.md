@@ -1,5 +1,12 @@
 # Getting Started with Create React App
 
+Hi This web is for individual photograper. Some features of this web is givin below
+-> Here user can see some work of photographer 
+-> User can choose the services they need
+-> user can delete the servive 
+-> And see how many service they booked
+-> user can see the review of other person 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
