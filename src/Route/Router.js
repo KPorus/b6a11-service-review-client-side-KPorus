@@ -64,10 +64,6 @@ let route = createBrowserRouter([
             {
                 path:"/userReviews",
                 element:<Private><UserReviews></UserReviews></Private>,
-                loader: async()=>
-                {
-                    return fetch(" https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/userReviews")
-                }
             }
             
         ]
