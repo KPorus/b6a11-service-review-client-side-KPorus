@@ -4,21 +4,21 @@ const UserReview = ({user, handleDelete}) => {
     let {_id,img,name,details,rating} = user;
     console.log(user);
     return (
-        <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-500 dark:bg-[#726359cb] dark:text-gray-100'>
+        <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-500 bg-[#726359cb] text-gray-100'>
       <div className='flex justify-between p-4'>
         <div className='flex space-x-4'>
           <div>
             <img
               src={img}
               alt=''
-              className='object-cover w-12 h-12 rounded-full dark:bg-gray-500'
+              className='object-cover w-12 h-12 rounded-full bg-gray-500'
             />
           </div>
           <div>
             <h4 className='font-bold'>{name}</h4>
           </div>
         </div>
-        <div className='flex items-center space-x-2 dark:text-yellow-500'>
+        <div className='flex items-center space-x-2 text-yellow-500'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 512 512'
@@ -28,7 +28,7 @@ const UserReview = ({user, handleDelete}) => {
           <span className='text-xl font-bold'>{rating}</span>
         </div>
       </div>
-      <div className='p-4 space-y-2 text-sm dark:text-gray-100'>         
+      <div className='p-4 space-y-2 text-sm text-gray-100'>         
         <p>
           {details}
         </p>

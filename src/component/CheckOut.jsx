@@ -1,13 +1,38 @@
-import React, { useContext } from "react";
+import { Rating } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
+import Loading from "./Loading";
 import Review from "./Review";
 
 const CheckOut = () => {
+  const [rate, setrate] = useState(2);
   const { user } = useContext(AuthContext);
   let services = useLoaderData();
-  let { title, price, review, _id } = services;
+  let { title, price, _id } = services;
+
+  
+  const {
+    isLoading,
+    refetch,
+    data: review = [],
+  } = useQuery({
+    queryKey: ["userPuduct"],
+    queryFn: async () => {
+      const res = await fetch(
+        `http://localhost:5000/service/reviews/${title}`
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
 
   const handlePlaceOrder = (event) => {
     event.preventDefault();
@@ -55,21 +80,23 @@ const CheckOut = () => {
       const name = user?.displayName;
       const img = user?.photoURL || "MX";
       const details = form.details.value;
-      const rating = form.rating.value;
       const email = user?.email || "unregistered";
+      let ServiceName = form.serviceName.value;
 
+      console.log(ServiceName);
       const userReview = 
         { name:name,
           details:details,
           email:email,
-          rating:rating,
-          img:img
+          rating:rate,
+          img:img,
+          ServiceName
         }
       
 
      if(user?.email)
      {
-      fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/userReview`, {
+      fetch(` http://localhost:5000/userReviews`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -82,16 +109,17 @@ const CheckOut = () => {
             console.log(data);
             if (data.acknowledged) {
               toast.success("Review add")
+              refetch()
             }form.reset();
         })
         .catch((er) => console.error(er));
      }
   };
-
+  
   document.title = "Check Out && Review";
   return (
     <div className='container mx-auto my-16'>
-      <div className='flex flex-col w-full p-12 space-y-4 text-center dark:bg-[#9c8476fb] dark:text-slate-300'>
+      <div className='flex flex-col w-full p-12 space-y-4 text-center bg-[#9c8476fb] text-slate-300'>
         <h1 className='text-3xl font-semibold'>Add the service: {title}</h1>
         <h1 className='text-3xl font-semibold'>Price:${price}</h1>
         <form
@@ -104,7 +132,7 @@ const CheckOut = () => {
               type='text'
               placeholder='Full Name'
               required
-              className='p-8 rounded-t-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+              className='p-8 rounded-t-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
             />
             <input
               name='email'
@@ -112,24 +140,24 @@ const CheckOut = () => {
               placeholder='email'
               defaultValue={user?.email}
               readOnly
-              className='p-8 mt-1 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+              className='p-8 mt-1 rounded-b-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
             />
             <input
               name='phone'
               type='text'
               placeholder='Phone Number'
-              className='p-8 mt-1 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+              className='p-8 mt-1 rounded-b-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
             />
           </div>
           <button
             type='submit'
-            className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100 mr-2'>
+            className='px-8 py-3 space-x-2 font-semibold rounded bg-[#6d5a50fb] text-slate-100 mr-2'>
             Submit
           </button>
           <Link to={`/orders`}>
             <button
               type='button'
-              className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100'>
+              className='px-8 py-3 space-x-2 font-semibold rounded bg-[#6d5a50fb] text-slate-100'>
               Check Your service
             </button>
           </Link>
@@ -140,31 +168,38 @@ const CheckOut = () => {
             name='Fullname'
             type='text'
             defaultValue={user?.displayName}
-            className='p-8 mr-2 rounded-t-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+            className='p-8 mr-2 rounded-t-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
+          />
+          <input
+            name='serviceName'
+            type='text'
+            defaultValue={title}
+            className='p-8 mr-2 rounded-t-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
           />
           <input
             name='email'
             type='email'
             defaultValue={user?.email}
             readOnly
-            className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+            className='p-8 mt-1 mr-2 rounded-b-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
           />
           <input
             name='details'
             type='text'
             placeholder='Add review'
-            className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+            className='p-8 mt-1 mr-2 rounded-b-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
           />
-          <input
-            name='rating'
-            type='text'
-            placeholder='Add Rating'
-            className='p-8 mt-1 mr-2 rounded-b-md dark:border-gray-600 dark:bg-slate-100 dark:text-gray-900 focus:ring-violet-400 focus:dark:border-violet-400 focus:ring-2'
+          <Rating
+            name='simple-controlled'
+            value={rate}
+            onChange={(event, newValue) => {
+              setrate(newValue);
+            }}
           />
           
             <button
               type='submit'
-              className='px-8 py-3 space-x-2 font-semibold rounded dark:bg-[#6d5a50fb] dark:text-slate-100'>
+              className='px-8 py-3 space-x-2 font-semibold rounded bg-[#6d5a50fb] text-slate-100'>
               Add Review
             </button>
         </form>
@@ -173,9 +208,7 @@ const CheckOut = () => {
         <h1>Review of {title}</h1>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-4'>
-        {review.map((review) => (
-          <Review key={_id} review={review}></Review>
-        ))}
+          {review.map(review=><Review key={_id} review={review} title={title}></Review>)}
       </div>
     </div>
   );

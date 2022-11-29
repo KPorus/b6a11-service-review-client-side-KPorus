@@ -3,10 +3,10 @@ import React from "react";
 const Blog = () => {
   document.title = "Blog"
   return (
-    <section className='dark:text-gray-600 mt-10'>
+    <section className='text-gray-600 mt-10'>
       <div className='container flex flex-col justify-center px-4 py-8 mx-auto md:p-8'>
         <h2 className='text-2xl font-semibold sm:text-4xl'>Blog</h2>
-        <p className='mt-4 mb-8 dark:text-gray-600'>
+        <p className='mt-4 mb-8 text-gray-600'>
           Here some answer of frequat question.
         </p>
         <div className='space-y-4'>
@@ -14,7 +14,7 @@ const Blog = () => {
             <summary className='px-4 py-6 focus:outline-none focus-visible:ring-violet-400'>
               Difference between SQL and NoSQL?
             </summary>
-            <p className='px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600'>
+            <p className='px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600'>
               When it comes to choosing a database the biggest decisions is
               picking a relational (SQL) or non-relational (NoSQL) data
               structure. While both the databases are viable options still there
@@ -91,7 +91,7 @@ const Blog = () => {
             <summary className='px-4 py-6 focus:outline-none focus-visible:ring-violet-400'>
               What is JWT, and how does it work??
             </summary>
-            <p className='px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600'>
+            <p className='px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600'>
               <b>What Is JWT?</b> JWT, or JSON Web Token, is an open standard
               used to share security information between two parties — a client
               and a server. Each JWT contains encoded JSON objects, including a
@@ -113,7 +113,7 @@ const Blog = () => {
             <summary className='px-4 py-6 focus:outline-none focus-visible:ring-violet-400'>
               What is the difference between javascript and NodeJS?
             </summary>
-            <p className='px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600'>
+            <p className='px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600'>
               <b>1.</b> JavaScript is a client-side scripting language that is
               lightweight, cross-platform, and interpreted. Both Java and HTML
               include it. Node.js, on the other hand, is a V8-based server-side
@@ -154,7 +154,7 @@ const Blog = () => {
             <summary className='px-4 py-6 focus:outline-none focus-visible:ring-violet-400'>
               How does NodeJS handle multiple requests at the same time?
             </summary>
-            <p className='px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600'>
+            <p className='px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600'>
               We know NodeJS application is single-threaded. Say, if processing
               involves request A that takes 10 seconds, it does not mean that a
               request which comes after this request needs to wait 10 seconds to

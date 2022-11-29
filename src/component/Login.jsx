@@ -35,6 +35,7 @@ const Login = () => {
       .then((result) => {
         toast.success("success");
         let user = result.user;
+        console.log(user);
         setLoading(true)
         setUser(user);
 
