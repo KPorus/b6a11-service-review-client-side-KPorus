@@ -5,6 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Context/AuthProvider/AuthProvider";
 import Loading from "./Loading";
 import Review from "./Review";
+import Login from "./Login"
 import ReviewModal from "./ReviewModal";
 
 const CheckOut = () => {
@@ -21,7 +22,7 @@ const CheckOut = () => {
     queryKey: ["userPuduct"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/service/reviews/${title}`
+        `https://b6a11-service-review-server-side-kp-orus-eight.vercel.app/service/reviews/${title}`
       );
       const data = await res.json();
       return data;
@@ -54,7 +55,7 @@ const CheckOut = () => {
     };
 
     // send data to database
-    fetch(" https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/orders", {
+    fetch(" https://b6a11-service-review-server-side-kp-orus-eight.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -113,13 +114,16 @@ const CheckOut = () => {
             className='px-8 py-3 space-x-2 font-semibold rounded bg-[#6d5a50fb] text-slate-100 mr-2'>
             Submit
           </button>
-          <Link to={`/orders`}>
+          {
+            user?.email ? (<Link to={`/orders`}>
             <button
               type='button'
               className='px-8 py-3 space-x-2 font-semibold rounded bg-[#6d5a50fb] text-slate-100'>
               Check Your service
             </button>
-          </Link>
+          </Link>) :
+          <Login></Login>
+          }
           </form>
               <label htmlFor="reviewPost" className="btn">Review</label>
             <ReviewModal  title={title} refetch={refetch}></ReviewModal>

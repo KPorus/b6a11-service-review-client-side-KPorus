@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserReview = ({user, handleDelete}) => {
-    let {_id,img,name,details,rating} = user;
+    let {_id,ServiceName,img,name,details,rating} = user;
     console.log(user);
     return (
         <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-500 bg-[#726359cb] text-gray-100'>
@@ -28,7 +28,8 @@ const UserReview = ({user, handleDelete}) => {
           <span className='text-xl font-bold'>{rating}</span>
         </div>
       </div>
-      <div className='p-4 space-y-2 text-sm text-gray-100'>         
+      <div className='p-4 space-y-2 text-sm text-gray-100'>  
+      <h1>Product name: {ServiceName}</h1>       
         <p>
           {details}
         </p>

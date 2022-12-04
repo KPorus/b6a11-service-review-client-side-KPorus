@@ -27,7 +27,7 @@ const ReviewModal = ({ refetch, title }) => {
     };
 
     if (user?.email) {
-      fetch(` http://localhost:5000/userReviews`, {
+      fetch(`https://b6a11-service-review-server-side-kp-orus-eight.vercel.app/userReviews`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

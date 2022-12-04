@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
 import Loading from "./Loading";
 import UserReview from "./UserReview";
 
@@ -15,7 +14,7 @@ const UserReviews = () => {
     queryKey: ["userPuduct"],
     queryFn: async () => {
       const res = await fetch(
-        `https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/userReviews`
+        `https://b6a11-service-review-server-side-kp-orus-eight.vercel.app/userReviews`
       );
       const data = await res.json();
       return data;
@@ -26,6 +25,7 @@ const UserReviews = () => {
     return <Loading></Loading>;
   }
 
+  console.log(review)
   if(review.length === 0)
   {
     return toast.error("Here is no review")
@@ -35,7 +35,7 @@ const UserReviews = () => {
       "Are you sure, you want to cancel this review"
     );
     if (proceed) {
-      fetch(` https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/userReviews/${id}`, {
+      fetch(`https://b6a11-service-review-server-side-kp-orus-eight.vercel.app/userReviews/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("photo-token")}`,

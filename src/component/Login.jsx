@@ -39,7 +39,7 @@ const Login = () => {
         setLoading(true)
         setUser(user);
 
-        fetch(' https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/jwt', {
+        fetch(' https://b6a11-service-review-server-side-kp-orus-eight.vercel.app/jwt', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'
@@ -110,7 +110,7 @@ const Login = () => {
           email: user.email
         }
         console.log(currentUser);
-        fetch(' https://b6a11-service-review-server-side-kp-orus-steel.vercel.app/jwt', {
+        fetch(' https://b6a11-service-review-server-side-kp-orus-eight.vercel.app/jwt', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'
