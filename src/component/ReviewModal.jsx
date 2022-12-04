@@ -85,6 +85,7 @@ const ReviewModal = ({ refetch, title }) => {
                       name='serviceName'
                       type='text'
                       defaultValue={title}
+                      readOnly
                       className='input input-bordered p-8 mr-2 rounded-t-md border-gray-600 bg-slate-100 text-gray-900 focus:ring-violet-400 focus:border-violet-400 focus:ring-2'
                     />
                     <input

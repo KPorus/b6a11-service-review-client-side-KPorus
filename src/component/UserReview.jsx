@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { AuthContext } from "./Context/AuthProvider/AuthProvider";
+import { BiUser } from "react-icons/bi";
 
-const UserReview = ({user, handleDelete}) => {
-    let {_id,ServiceName,img,name,details,rating} = user;
-    console.log(user);
-    return (
-        <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-500 bg-[#726359cb] text-gray-100'>
+const UserReview = ({ userReview, handleDelete }) => {
+  let {user} = useContext(AuthContext)
+  let { _id, ServiceName, name, details, rating } = userReview;
+  console.log(user);
+  return (
+    <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-500 bg-[#726359cb] text-gray-100'>
       <div className='flex justify-between p-4'>
         <div className='flex space-x-4'>
           <div>
-            <img
-              src={img}
-              alt=''
-              className='object-cover w-12 h-12 rounded-full bg-gray-500'
-            />
+            {user?.photoURL ? (
+              <img
+                src={user?.photoURL}
+                alt=''
+                className='object-cover w-12 h-12 rounded-full dark:bg-gray-500'
+              />
+            ) : (
+              <BiUser className='text-5xl border rounded-full'></BiUser>
+            )}
           </div>
           <div>
             <h4 className='font-bold'>{name}</h4>
@@ -28,15 +35,15 @@ const UserReview = ({user, handleDelete}) => {
           <span className='text-xl font-bold'>{rating}</span>
         </div>
       </div>
-      <div className='p-4 space-y-2 text-sm text-gray-100'>  
-      <h1>Product name: {ServiceName}</h1>       
-        <p>
-          {details}
-        </p>
+      <div className='p-4 space-y-2 text-sm text-gray-100'>
+        <h1>Product name: {ServiceName}</h1>
+        <p>{details}</p>
       </div>
-      <span className='btn btn-warning' onClick={()=>handleDelete(_id)}>Delete</span>
+      <span className='btn btn-warning' onClick={() => handleDelete(_id)}>
+        Delete
+      </span>
     </div>
-    );
+  );
 };
 
 export default UserReview;

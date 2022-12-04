@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "./Context/AuthProvider/AuthProvider";
 import Loading from "./Loading";
 import UserReview from "./UserReview";
 
 const UserReviews = () => {
-  
+  const {user} = useContext(AuthContext);
   const {
     isLoading,
     refetch,
@@ -26,6 +27,8 @@ const UserReviews = () => {
   }
 
   console.log(review)
+  let userReview = review.filter(review => review.email === user?.email)
+  console.log("userReview",userReview)
   if(review.length === 0)
   {
     return toast.error("Here is no review")
@@ -52,10 +55,10 @@ const UserReviews = () => {
   };
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-4 container mx-auto my-14'>
-      {review.map((user) => (
+      {userReview.map((userReview) => (
         <UserReview
-          key={user._id}
-          user={user}
+          key={userReview._id}
+          userReview={userReview}
           handleDelete={handleDelete}></UserReview>
       ))}
     </div>

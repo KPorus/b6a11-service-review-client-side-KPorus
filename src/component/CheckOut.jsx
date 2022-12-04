@@ -74,8 +74,6 @@ const CheckOut = () => {
       .catch((er) => console.error(er));
   };
 
-    
-  
   document.title = "Check Out && Review";
   return (
     <div className='container mx-auto my-16'>
@@ -83,7 +81,7 @@ const CheckOut = () => {
         <h1 className='text-3xl font-semibold'>Add the service: {title}</h1>
         <h1 className='text-3xl font-semibold'>Price:${price}</h1>
         <form
-          novalidate=''
+          noValidate=''
           className='space-y-4 ng-untouched ng-pristine ng-valid'
           onSubmit={handlePlaceOrder}>
           <div className='flex flex-col'>

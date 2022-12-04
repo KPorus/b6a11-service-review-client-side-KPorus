@@ -2,15 +2,15 @@ import React from "react";
 
 
 const Review = ({review}) => {
-  let {name,ServiceName,details,rating}= review
+  let {name,img,ServiceName,details,rating}= review
 
   return (
     <div className='container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md bg-[#726359cb] text-slate-50'>
     <div className='flex justify-between p-4'>
-      <div className='flex space-x-4'>
+      <div className='flex space-x-4 items-center'>
         <div>
           <img
-            src='https://source.unsplash.com/100x100/?portrait'
+            src={img}
             alt=''
             className='object-cover w-12 h-12 rounded-full dark:bg-gray-500'
           />
